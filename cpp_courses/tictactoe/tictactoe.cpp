@@ -3,7 +3,6 @@
 // Author: Samuel Berg
 // Date: 10-Aug-2019
 
-#include "pch.h"
 #include <iostream>
 using namespace std;
 
