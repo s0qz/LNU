@@ -1,3 +1,8 @@
+# timer.ru
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 def timer
     start_time = Time.now
     yield

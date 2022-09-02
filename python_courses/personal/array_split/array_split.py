@@ -1,3 +1,8 @@
+# array_split.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 def splitArr(arr, n, k):
     for i in range(0, k):
         x = arr[0]

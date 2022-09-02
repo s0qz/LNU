@@ -1,3 +1,8 @@
+# logger.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 from pynput.keyboard import Key, Listener
 import logging
 

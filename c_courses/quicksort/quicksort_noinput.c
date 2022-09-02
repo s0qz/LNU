@@ -1,3 +1,8 @@
+// quicksort_noinput.c
+//
+// Author: Samuel Berg
+// Date: 10-Sep-2019
+
 #include<stdio.h>
 
 void swap(int* a, int* b) {

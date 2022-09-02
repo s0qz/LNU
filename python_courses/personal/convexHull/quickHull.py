@@ -1,3 +1,8 @@
+# quickHull.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 from math import sqrt
 
 def quickHull(v):

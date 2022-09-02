@@ -1,3 +1,8 @@
+// math.cpp
+//
+// Author: Samuel Berg
+// Date: 10-Sep-2019
+
 #include <iostream>
 using namespace std;
 

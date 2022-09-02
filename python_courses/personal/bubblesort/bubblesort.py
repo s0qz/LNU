@@ -1,3 +1,8 @@
+# bubblesort.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 def sort(arr):
     while True:
         corrected = False
@@ -8,10 +13,11 @@ def sort(arr):
         if not corrected:
             return arr
 
-
 # best 0(n)
 print(sort([1, 2, 3, 4, 5, 6]))
-# avrerage 0(n^2)
+
+# average 0(n^2)
 print(sort([4, 2, 3, 1, 6, 5]))
+
 # worst 0(n^2)
 print(sort([6, 5, 4, 3, 2, 1]))
