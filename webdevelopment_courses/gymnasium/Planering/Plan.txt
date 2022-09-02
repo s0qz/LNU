@@ -1,0 +1,23 @@
+Hemsidan kommer vara indelade i 8 olika sidor.
+Dessa sidor är Start, Chess, Solitaire, Pong, Tetris, Tic Tac Toe, Download och Feedback sidor där information om det den delen av sidan heter.
+Sidorna kommer att ha trespaltslayout med hjälp av en css grid där vadera sida om information delrn som ligger mitt i mellan dessa tå spaltar, 
+den vänstra splaten kommer att ha nav:en i sig medans den högra kommer bara vara där för att se bra ut. Bilder kommer att vara med på de sidor som 
+förklarar om spelen och deras regler.
+
+Start sidan kommer att vara den sida där jag kortfattat berättar om de som kommer att vara på de andra sidona på hemsidan och varför jag har gjort den här hemsidan.
+
+Chess sidan kommer att ha en kort förklarning om hur chess och vad spelets regler är och en nav som endast är för chess sidan till ett JavaScript chess spel jag har gjort.
+
+Solitaire sidan kommer att ha en förklarning om hur solitaire fungerar och reglerna det har.
+
+Pong sidan kommer att ha en förklarning om hur pong fungerar och reglerna spelet har som man ska följa.
+
+Tetris sidan kommer att ha en förklarning på hur spelet fungerar och spelets regler och med en nav med en möjlighet att pröva på ett tetris spel jag har gjort i JavaScript.
+
+Tic Tac Toe sidan kommer att ha en förklarning av spelets regler och hur det går till.
+
+Download sidan kommer att ha en knapp för att möjligen kunna ladda ner en GameHub med spelen som jag går igenom på föregående sidor. 
+(Kan va att GameHub blir ej klar i tid eller att jag får det ej möjligt att ladda ner).
+
+Feedback sidan kommer man att ha möjligheten att fylla i ett formulär för att skicka in feedback till mig som skapare av spelen och hemsidan om buggar och annat.
+
