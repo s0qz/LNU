@@ -1,3 +1,8 @@
+// double.c
+//
+// Author: Samuel Berg
+// Date: 10-Sep-2019
+
 #include <stdio.h>
 #include <stdlib.h>
 

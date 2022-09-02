@@ -1,6 +1,6 @@
 all: clean
-	gcc -o Network Network.c
-	./Network
+	gcc -o network network.c
+	./network
 
 clean:
-	rm -f Network
+	rm -f network

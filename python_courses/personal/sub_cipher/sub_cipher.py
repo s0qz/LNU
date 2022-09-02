@@ -1,3 +1,8 @@
+# sub_cipher.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 import base64
 import hashlib
 import sys
@@ -6,7 +11,9 @@ import sys
 KEY = b'akKJ6779N8*n73*66876934nHUHkoajjfh86%(T96'
 
 # create a list of all the characters in base64 w/ padding
-b64_chars = [c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=']
+b64_chars = [
+    c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=']
+
 
 def convert(string, type):
     # take sha512 hash of the key
@@ -33,12 +40,13 @@ def convert(string, type):
     # if this operation is decryption, keys/values must be reverse
     if type == 'd':
         sbox = dict((v, k) for k, v in sbox.items())
-    
+
     # substitute characters in the string according to the sbox
     for i, c in enumerate(string):
         string[i] = sbox[c]
 
     return ''.join(string)
+
 
 def encrypt(string):
     # base64 encode plaintext and convert to list of characters
@@ -46,10 +54,12 @@ def encrypt(string):
 
     return convert(string, 'e')
 
+
 def decrypt(string):
     string = [c for c in string.strip()]
 
     return base64.b64decode(convert(string, 'd')).decode()
+
 
 if sys.argv[1] == '-d':
     print(decrypt(sys.stdin.read()))

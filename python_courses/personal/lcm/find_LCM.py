@@ -1,3 +1,8 @@
+# find_lcm.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 def lcm(x, y):
     if x > y:
         greater = x

@@ -1,3 +1,8 @@
+# device.py
+#
+# Author: Samuel Berg
+# Date: 10-Sep-2019
+
 import socket
 import uuid
 

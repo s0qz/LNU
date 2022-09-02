@@ -1,3 +1,8 @@
+// hcf_lcm.cpp
+//
+// Author: Samuel Berg
+// Date: 10-Sep-2019
+
 #include <iostream>
 #include <string>
 using namespace std;
