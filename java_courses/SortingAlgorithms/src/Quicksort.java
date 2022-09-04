@@ -1,36 +1,36 @@
 public class Quicksort {
-    public static void quickSort(double[] floatArray){
-        quickSort(floatArray, 0, floatArray.length - 1);
+    public static void quickSort(double[] doubleArray){
+        quickSort(doubleArray, 0, doubleArray.length - 1);
     }
 
-    private static void quickSort(double[] floatArray, int left, int right){
+    private static void quickSort(double[] doubleArray, int left, int right){
         if (left < right){
-            int pivot = partition(floatArray, left, right);
+            int pivot = partition(doubleArray, left, right);
 
             if (pivot > 1)
-                quickSort(floatArray, left, pivot - 1);
+                quickSort(doubleArray, left, pivot - 1);
             if (pivot + 1 < right)
-                quickSort(floatArray, pivot + 1, right);
+                quickSort(doubleArray, pivot + 1, right);
 
         }
     }
 
-    private static int partition(double[] floatArray, int left, int right){
-        double pivot = floatArray[left];
+    private static int partition(double[] doubleArray, int left, int right){
+        double pivot = doubleArray[left];
         while (true){
-            while (floatArray[left] < pivot)
+            while (doubleArray[left] < pivot)
                 left++;
 
-            while (floatArray[right] > pivot)
+            while (doubleArray[right] > pivot)
                 right--;
 
             if (left < right){
-                if (floatArray[left] == floatArray[right])
+                if (doubleArray[left] == doubleArray[right])
                     return right;
 
-                double temp = floatArray[left];
-                floatArray[left] = floatArray[right];
-                floatArray[right] = temp;
+                double temp = doubleArray[left];
+                doubleArray[left] = doubleArray[right];
+                doubleArray[right] = temp;
             }
             else
                 return right;

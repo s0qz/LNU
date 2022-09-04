@@ -1,22 +1,22 @@
 public class Insertionsort {
-    public static void insertionSort(double[] floatArray){
+    public static void insertionSort(double[] doubleArray){
         int i, n;
-        int length = floatArray.length;
+        int length = doubleArray.length;
         double temp;
 
         if (length < 2)
             return;
 
         for (n = 1; n < length; n++){
-            temp = floatArray[n];
+            temp = doubleArray[n];
             i = n - 1;
 
-            while (i >= 0 && floatArray[i] > temp){
-                floatArray[i + 1] = floatArray[i];
+            while (i >= 0 && doubleArray[i] > temp){
+                doubleArray[i + 1] = doubleArray[i];
                 i--;
             }
 
-            floatArray[i + 1] = temp;
+            doubleArray[i + 1] = temp;
         }
     }
 }
