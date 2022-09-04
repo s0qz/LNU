@@ -24,21 +24,21 @@ public class Main {
 
         StopWatch stopWatch = new StopWatch();
 
-        double bubbleTime = - 1, insertionTime = - 1, mergeTime = - 1, quickTime = -1;
+        double bubbleTime, insertionTime, mergeTime, quickTime;
 
         stopWatch.start();
         Bubblesort.bubbleSort(bubbleSort);
         stopWatch.stop();
         bubbleTime = stopWatch.getTime(TimeUnit.MILLISECONDS);
         stopWatch.reset();
-        System.out.println("Bubblesort Done!");
+        System.out.println("Bubble sort Done!");
 
         stopWatch.start();
         Insertionsort.insertionSort(insertionSort);
         stopWatch.stop();
         insertionTime = stopWatch.getTime(TimeUnit.MILLISECONDS);
         stopWatch.reset();
-        System.out.println("Insertionsort Done!");
+        System.out.println("Insertion sort Done!");
 
         stopWatch.start();
         Mergesort.mergeSort(mergeSort);
@@ -54,8 +54,8 @@ public class Main {
         stopWatch.reset();
         System.out.println("Quicksort Done!");
 
-        System.out.println("Bubblesort: " + bubbleTime + " milliseconds");
-        System.out.println("Insertionsort: " + insertionTime + " milliseconds");
+        System.out.println("Bubble sort: " + bubbleTime + " milliseconds");
+        System.out.println("Insertion sort: " + insertionTime + " milliseconds");
         System.out.println("Mergesort: " + mergeTime + " microseconds");
         System.out.println("Quicksort: " + quickTime + " microseconds");
     }
