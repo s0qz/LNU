@@ -215,11 +215,11 @@ namespace InfogandeSortering
             Console.WriteLine("Array with 1000 elements took: " + Ltime + " ns");
             Console.WriteLine("Array with 100000 elements took: " + Mtime + " ns");
 
-            if(Atime < Dtime && Atime < Gtime && Atime < Ktime) //Looking for fastest sortingalgorithm for 10 elements
+            if (Atime < Dtime && Atime < Gtime && Atime < Ktime) //Looking for fastest sortingalgorithm for 10 elements
             {
                 Fastest10 = Atime;
             }
-            else if(Dtime < Atime && Dtime < Gtime && Dtime < Ktime)
+            else if (Dtime < Atime && Dtime < Gtime && Dtime < Ktime)
             {
                 Fastest10 = Dtime;
             }
@@ -278,7 +278,7 @@ namespace InfogandeSortering
             Console.WriteLine("Fastest sorting algorithm for 100000 elements: ");
             Console.WriteLine(Fastest100000);
 
-            Console.ReadLine(); 
+            Console.ReadLine();
         }
     }
 }
