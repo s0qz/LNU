@@ -1,8 +1,9 @@
+import random
 '''Problem:
 They say that if you roll a die enough times, you should get about the same number of ones, twos, threes and so on.
 But is that true? Create a program called roll_the_die.py which rolls a die and stores how many times it comes up at one, two, three and so on.
 It will do this many times, more on this a bit further down. You will notice that for few rolls, there is quite a difference between how many times the different faces will show up.
-Calculate the difference between the face that turns up the most times and the face that shows up the least times.
+Calculate the difference between the face that turns up the most times and the face that shows up the least times. (most - least) / (most) ?
 This should then be divided with the number of the face that was shown the most to give you a sort of ratio (in percent) of the difference.
 This should then be done 20 times with increasing number of times to roll the die, from 10 to 20 to 40 and so on by doubling the number of rolls each time.
 Present it like shown below:
@@ -28,3 +29,37 @@ For 655360 rolls, the difference is 0.9%
 For 1310720 rolls, the difference is 0.4%
 For 2621440 rolls, the difference is 0.18%
 '''
+def roll_the_die(N):
+    ones = 0
+    twos = 0
+    threes = 0
+    fours = 0
+    fives = 0
+    sixes = 0
+
+    for i in range(N):
+        die = random.randint(1, 6)
+        if die == 1:
+            ones += 1
+        elif die == 2:
+            twos += 1
+        elif die == 3:
+            threes += 1
+        elif die == 4:
+            fours += 1
+        elif die == 5:
+            fives += 1
+        else:
+            sixes += 1
+        
+    most = max(ones, twos, threes, fours, fives, sixes)
+        
+    least = min(ones, twos, threes, fours, fives, sixes)
+    
+    difference = round(((most - least) / most) * 100, 2)
+
+    print(f'For {N} rolls, the difference is {difference}%')
+
+
+for i in [10, 20 , 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240, 20480, 40960, 81920, 163840, 327680, 655360, 1310720, 2621440]:
+    roll_the_die(i)
