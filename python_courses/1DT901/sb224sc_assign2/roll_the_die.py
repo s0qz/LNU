@@ -30,36 +30,18 @@ For 1310720 rolls, the difference is 0.4%
 For 2621440 rolls, the difference is 0.18%
 '''
 def roll_the_die(N):
-    ones = 0
-    twos = 0
-    threes = 0
-    fours = 0
-    fives = 0
-    sixes = 0
-
+    stored_rolls = [0, 0, 0, 0, 0, 0]
     for i in range(N):
-        die = random.randint(1, 6)
-        if die == 1:
-            ones += 1
-        elif die == 2:
-            twos += 1
-        elif die == 3:
-            threes += 1
-        elif die == 4:
-            fours += 1
-        elif die == 5:
-            fives += 1
-        else:
-            sixes += 1
+        die = random.randint(0, 5)
+        stored_rolls[die] += 1
         
-    most = max(ones, twos, threes, fours, fives, sixes)
+    most = max(stored_rolls)
         
-    least = min(ones, twos, threes, fours, fives, sixes)
+    least = min(stored_rolls)
     
     difference = round(((most - least) / most) * 100, 2)
 
     print(f'For {N} rolls, the difference is {difference}%')
 
-
-for i in [10, 20 , 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240, 20480, 40960, 81920, 163840, 327680, 655360, 1310720, 2621440]:
+for i in [10, 20, 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240, 20480, 40960, 81920, 163840, 327680, 655360, 1310720, 5242880]:
     roll_the_die(i)

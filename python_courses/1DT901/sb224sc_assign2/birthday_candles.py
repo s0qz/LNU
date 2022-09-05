@@ -23,3 +23,25 @@ Before birthday 100, buy 4 box(es)
 
 Total number of boxes: 211, Remaining candles: 14
 '''
+CANDLE_SIZE = 24
+MAX_AGE = 100
+
+total_boxes = 0
+left_candles = 0
+years = 0
+
+for years in range(1, 101):
+    amount_box = 0
+    if years > left_candles:
+        while years > left_candles:
+            left_candles += CANDLE_SIZE
+            total_boxes += 1
+            amount_box += 1
+        print(f'Before birthday {years}, buy {amount_box} box(es)')
+        left_candles -= years
+    else:
+        left_candles -= years
+
+
+print(
+    f'\nTotal number of boxes: {total_boxes}, Remaining candles: {left_candles}')
