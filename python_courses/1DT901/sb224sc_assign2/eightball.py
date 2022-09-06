@@ -19,3 +19,14 @@ Ask the magic 8-ball your question: Why? Please tell me if I will...
 The magic 8-ball says: Very doubtful
 Ask the magic 8-ball your question: stop
 '''
+from random import randint
+magic_ball = ['Ask again later',
+              'As I see it, yes', 'Concentrate and ask again', 'Better not tell you now', 'Very doubtful']
+i = 'None'
+
+while i != 'stop':
+    i = input('Ask the magic 8-ball your question: ').lower()
+    if i == 'stop':
+        exit()
+    else:
+        print(f'The magic 8-ball says: {magic_ball[randint(0, 4)]}')
