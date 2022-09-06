@@ -11,51 +11,27 @@ My hand:
 5 of Spaces
 Ace of Diamonds
 '''
-from random import randint
-values = list(range(2, 15))
-colors = ['of Hearts', 'of Diamonds', 'of Spades', 'of Clubs']
 
-face_cards = {
-    11: 'Jack',
-    12: 'Queen',
-    13: 'King',
-    14: 'Ace'
-}
+# deck.py
+#
+# Author: Samuel Berg
+# Date: 06-Sep-2022
 
+from random import randint, shuffle
+values = ['2 ', '3 ', '4 ', '5 ', '6 ', '7 ', '8 ',
+          '9 ', '10 ', 'Jack ', 'Queen ', 'King ', 'Ace ']
+colors = ['of Hearts', 'of Spades', 'of Diamonds', 'of Clubs']
+face_cards = ['Jack', 'Queen', 'King', 'Ace']
 
-class Card:
-    def __init__(self, value, color):
-        self.value = value
-        self.color = color
+deck = []
 
+for value in values:
+    for color in colors:
+        tmp = value + color
+        deck.append(tmp)
 
-def generate_deck(value, color):
-    deck = []
-    for value in values:
-        for color in colors:
-            if value in face_cards:
-                card_value = face_cards[value]
-                deck.append(Card(card_value, color))
-            else:
-                deck.append(Card(value, color))
-    return deck
+shuffle(deck)
 
-
-deck = generate_deck(values, colors)
-
-for card in deck:
-    print(card.value, card.color)
-
-
-def shuffle(deck):
-    for i in range(0, 52):
-        r = randint(0, i)
-        deck[i], deck[r] = deck[r], deck[i]
-
-
-deck = shuffle(deck)
-print('My hand: ')
-for _ in range(0, 5):
-    r = randint(0, 52)
-    print(f'{deck[r]}')
-    deck.pop(r)
+print('My hand:')
+for i in range(5):
+    print(f'{deck[i]}')

@@ -17,8 +17,10 @@ Enter y2: 6
 The distance between (1.0,1.0) and (5.0,6.0) is 6.403
 '''
 
-
-
+# distance.py
+#
+# Author: Samuel Berg
+# Date: 06-Sep-2022
 
 from math import sqrt
 def distance(x1, y1, x2, y2):

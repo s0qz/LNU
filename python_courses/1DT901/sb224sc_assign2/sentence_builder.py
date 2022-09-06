@@ -19,6 +19,11 @@ I will touch a car
 I will see a tree
 '''
 
+# sentence_builder.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
+
 from random import randint
 PRONOUN = ['It', 'They', 'You', 'I', 'We']
 VERB = ['will see', 'will eat', 'will pull', 'will touch', 'will paint']

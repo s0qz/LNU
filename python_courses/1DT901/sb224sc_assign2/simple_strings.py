@@ -14,6 +14,10 @@ In that sentence, the number of vowels is 10 and the number of consonants is 10
 In the sentence "I am 1 with the Force, not 2..." the number of letters is 18, symbols is 11 and numbers is 2
 '''
 
+# simple_strings.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
 
 def first_last(s):  # Returns the first and last character in the string s
     return print(f'First and last in "{s}": {s[0]} {s[-1]}')

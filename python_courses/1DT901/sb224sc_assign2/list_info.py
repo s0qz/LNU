@@ -9,6 +9,12 @@ Smallest value in list: 22
 Average value in list: 4677.61
 Second largest value in list: 9941
 '''
+
+# list_info.py
+#
+# Author: Samuel Berg
+# Date: 06-Sep-2022
+
 from random import randint
 lst = [randint(1, 10000) for i in range(100)]
 num = 0

@@ -12,8 +12,10 @@ Generated values: 77 15 13 54 96 73 100 12 98 28
 Average, min, and max are 56.6, 12, and 100
 '''
 
-
-
+# random_numbers.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
 
 import random
 def random_numbers(N):

@@ -19,6 +19,12 @@ Ask the magic 8-ball your question: Why? Please tell me if I will...
 The magic 8-ball says: Very doubtful
 Ask the magic 8-ball your question: stop
 '''
+
+# eightball.py
+#
+# Author: Samuel Berg
+# Date: 06-Sep-2022
+
 from random import randint
 magic_ball = ['Ask again later',
               'As I see it, yes', 'Concentrate and ask again', 'Better not tell you now', 'Very doubtful']

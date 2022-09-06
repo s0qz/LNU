@@ -23,6 +23,12 @@ Before birthday 100, buy 4 box(es)
 
 Total number of boxes: 211, Remaining candles: 14
 '''
+
+# birthday_candles.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
+
 CANDLE_SIZE = 24
 MAX_AGE = 100
 

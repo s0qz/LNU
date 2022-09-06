@@ -6,3 +6,4 @@ The proportion of points inside the circle should then approximately be the same
 Write a program pi_approx.py that computes (and prints) a pi approximation for N=100, N=10000, and N=1000000.
 Print also the error (i.e. the absolute value of pi_actual - pi_approx).
 '''
+from random import randint

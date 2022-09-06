@@ -39,6 +39,10 @@ Is 42 even?:  True
 2 to the power of 16: 65536
 '''
 
+# simple_math.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
 
 def inc(n):  # Increments n with one
     return n + 1
@@ -61,10 +65,7 @@ def greatest(n1, n2):  # Returns the largest of the values n1 and n2
 
 
 def is_even(n):  # Returns True if n is even, otherwise false
-    if n % 2 == 0:
-        return True
-    else:
-        return False
+    return n % 2 == 0
 
 
 def power(x, n):  # Returns x to the power of n

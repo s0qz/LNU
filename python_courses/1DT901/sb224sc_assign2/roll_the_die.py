@@ -30,6 +30,10 @@ For 1310720 rolls, the difference is 0.4%
 For 2621440 rolls, the difference is 0.18%
 '''
 
+# roll_the_die.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
 
 def roll_the_die(N):
     stored_rolls = [0, 0, 0, 0, 0, 0]

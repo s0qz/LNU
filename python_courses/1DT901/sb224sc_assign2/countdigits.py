@@ -11,6 +11,10 @@ Odd: 3
 Even: 2
 '''
 
+# countdigits.py
+#
+# Author: Samuel Berg
+# Date: 05-Sep-2022
 
 def count_digits(N):
     zero = 0
