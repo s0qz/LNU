@@ -20,7 +20,7 @@ amount_of_primes = int(input('How many primes? '))
 
 
 while (len(primes) < amount_of_primes):
-    if (check_if_prime(N) == True and N > 1):
+    if (check_if_prime(N) and N > 1):
         primes.append(N)
         N += 1
     else:
