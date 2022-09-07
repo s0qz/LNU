@@ -1,4 +1,4 @@
-# birthday_candles.py
+# palindrome.py
 #
 # Author: Samuel Berg
 # Date: 06-Sep-2022
