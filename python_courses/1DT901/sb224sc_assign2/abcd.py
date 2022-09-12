@@ -1,11 +1,21 @@
-'''Problem:
-There are four different digits A, B, C, and D such that the number DCBA isequal to 4 times the number ABCD.
-What are the four digits? Note: to make ABCD and DCBA a proper four digit integer, neither A nor D can be zero.
-The name of the program computing A, B, C, and D should be named abcd.py.
-Hint: Use a quadruple nested loop and a function get_number(a, b, c, d) that converts digits a, b, c, d into a four digit integer abcd.
-'''
-
+# abcd.py
+#
+# Author: Samuel Berg
+# Date: 12-Sep-2022
 
 def get_number(a, b, c, d):
-    tmp = f'{a}{b}{c}{d}'
-    return int(tmp)
+    abcd = int(str(a) + str(b) + str(c) + str(d))
+    dcba = int(str(d) + str(c) + str(b) + str(a))
+    if (4 * abcd) == dcba:
+        print(abcd)
+
+
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+for a in numbers:
+    if a != 0:
+        for b in numbers:
+            for c in numbers:
+                for d in numbers:
+                    if d != 0:
+                        get_number(a, b, c, d)
