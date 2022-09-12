@@ -1,22 +1,34 @@
-'''Problem:
-Assume a unit circle centred around origin inside a square with sides 2 like in the figure above.
-Assume also that we randomly generate N points (x,y) where both x and y are within the range [- 1,1].
-The proportion of points inside the circle should then approximately be the same as the ratio between the circle area piRR
-(which equals pi since R=1) and the square area 4. This relation can be used to compute an approximation of pi.
-Write a program pi_approx.py that computes (and prints) a pi approximation for N=100, N=10000, and N=1000000.
-Print also the error (i.e. the absolute value of pi_actual - pi_approx).
-'''
+# pi_approx.py
+#
+# Author: Samuel Berg
+# Date: 12-Sep-2022
+
 from math import pi
 from random import uniform
 
 
-def pi_approx(x, y):
+def pi_approx(N):
+    for _ in range(N):
+        x = uniform(-1, 1)
+        y = uniform(-1, 1)
+        if (in_unit_circle(x, y)):
+            points.append([x, y])
+    approx = SQUARE_AREA * (len(points) / N)
+    print(f'PI is approximately: {approx}')
+    print(f'Difference between actual pi and approximated: {abs(pi - approx)}')
 
-    return pi_approx
+
+def in_unit_circle(x, y):
+    if pow(x, 2) + pow(y, 2) <= RADIUS:
+        return True
+    else:
+        return False
 
 
-x = uniform(-1, 1)
-y = uniform(-1, 1)
-radius = 1
-square_area = 4
-pi_actual = pi
+RADIUS = 1
+SQUARE_AREA = 4
+points = []
+
+pi_approx(100)
+pi_approx(10000)
+pi_approx(1000000)
