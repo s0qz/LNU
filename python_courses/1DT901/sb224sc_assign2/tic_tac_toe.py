@@ -3,11 +3,15 @@
 # Author: Samuel Berg
 # Date: 12-Sep-2022
 def winner(b):
-    for i in range(len(b)):
-        if b[i][0] is not None and b[i][0] == b[i][0] == b[i][0]:   # Fix
-            return True
-        else:
-            return False
+    for i in range(0, 3):
+        for j in range(0, 3):   # Goes out of range ??
+            print(i, j)  # Debugging
+            if b[i][j] is not None and b[i][j] == b[i + 1][j] == b[i + 2][j]:
+                return True  # I think this checks all column solutions
+            elif b[j][i] is not None and b[j][i] == b[j + 1][i] == b[j + 2][i]:
+                return True  # I think this checks all row solutions
+
+    return False
 
 
 def getRowCol(board, col, row):
@@ -34,8 +38,16 @@ def get_attribute(b):
         return 'O'
 
 
-def move(board, row, col, turn):
-    board[col - 1][row - 1] = turn
+def move(board, col, row, turn):
+    if board[row - 1][col - 1] is None:
+        board[row - 1][col - 1] = turn
+    else:
+        print('Select an empty spot on the board.')
+        row = int(
+            input(f'Player {get_attribute(turn)}, which row do you play? '))
+        col = int(
+            input(f'Player {get_attribute(turn)}, which column do you play? '))
+        move(board, row, col, turn)
 
 
 '''
@@ -59,7 +71,7 @@ while True:
     row = int(input(f'Player {get_attribute(turn)}, which row do you play? '))
     col = int(
         input(f'Player {get_attribute(turn)}, which column do you play? '))
-    move(board, row, col, turn)
+    move(board, col, row, turn)
     if winner(board):
         display_board(board)
         print(f'{get_attribute(turn)} Won!')
