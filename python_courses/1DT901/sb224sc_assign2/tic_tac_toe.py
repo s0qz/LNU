@@ -1,55 +1,67 @@
-'''Problem:
-In the 1983 movie "War Game" the computer is finally overturn by asking it to
-play a game of tic-tac-toe. In this task, create a program called
-tic_tac_toe.py that implements this game for two players taking turn in
-selecting where in a 3x3 grid to put their markers. In turn, ask each player
-which row and column they want to play. Make sure that the program checks if
-that row/column combination is empty. When a player has won, end the game.
-When the whole board is full and there is no winner, announce a draw.
-As the program will be fairly large, you should divide it into suitable
-functions that do subset of the problem, but it up to you to decide what
-functions to use.
-See below for an example execution of the game:
-'''
-'''Desired output:
-  1 2 3
-1 - - -
-2 - - -
-3 - - -
-Player X, which row do you play? 2
-Player X, which column do you play? 2
-  1 2 3
-1 - - -
-2 - X -
-3 - - -
-Player O, which row do you play? 1
-Player O, which column do you play? 1
-  1 2 3
-1 O - -
-2 - X -
-3 - - -
-Player X, which row do you play? 2
-Player X, which column do you play? 3
-  1 2 3
-1 O - -
-2 - X X
-3 - - -
-Player O, which row do you play? 3
-Player O, which column do you play? 3
-  1 2 3
-1 O - -
-2 - X X
-3 - - O
-Player X, which row do you play? 2
-Player X, which column do you play? 1
-  1 2 3
-1 O - -
-2 X X X
-3 - - O
-Player X won!
-'''
-
 # tic_tac_toe.py
 #
 # Author: Samuel Berg
 # Date: 12-Sep-2022
+def winner(b):
+    for i in range(len(b)):
+        if b[i][0] is not None and b[i][0] == b[i][0] == b[i][0]:   # Fix
+            return True
+        else:
+            return False
+
+
+def getRowCol(board, col, row):
+    if board[col][row] is None:
+        board[col][row] = turn
+    else:
+        return True
+
+
+def display_board(board):
+    print('  1 2 3')
+    for i, row in enumerate(board):
+        print(i + 1, get_attribute(row[0]), get_attribute(
+            row[1]), get_attribute(row[2]))
+    return board
+
+
+def get_attribute(b):
+    if b is None:
+        return '-'
+    elif b is False:
+        return 'X'
+    else:
+        return 'O'
+
+
+def move(board, row, col, turn):
+    board[col - 1][row - 1] = turn
+
+
+'''
+Board:
+  1 2 3
+1 - - -
+2 - - -
+3 - - -
+None = -
+False = X
+True = O
+'''
+board = [
+    [None, None, None],
+    [None, None, None],
+    [None, None, None]]
+
+turn = False
+while True:
+    display_board(board)
+    row = int(input(f'Player {get_attribute(turn)}, which row do you play? '))
+    col = int(
+        input(f'Player {get_attribute(turn)}, which column do you play? '))
+    move(board, row, col, turn)
+    if winner(board):
+        display_board(board)
+        print(f'{get_attribute(turn)} Won!')
+        exit()
+    turn = not turn

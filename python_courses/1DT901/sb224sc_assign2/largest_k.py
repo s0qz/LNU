@@ -7,7 +7,7 @@
 def largest_k(N):
     iterator = 0
     sum = 0
-    while ((sum + iterator) < N):
+    while ((sum + iterator) <= N):
         sum += iterator
         iterator += 2
     iterator -= 2
