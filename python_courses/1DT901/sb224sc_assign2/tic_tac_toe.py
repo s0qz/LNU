@@ -72,7 +72,7 @@ def move(board, col, row, turn):
             input(f'Player {get_attribute(turn)}, which row do you play? '))
         col = int(
             input(f'Player {get_attribute(turn)}, which column do you play? '))
-        move(board, row, col, turn)
+        move(board, col, row, turn)
 
 
 '''
@@ -92,6 +92,7 @@ board = [
 
 # Keeps track of whose turn it is
 turn = False
+turn_counter = 0
 
 # Actual game loop
 while True:
@@ -111,4 +112,8 @@ while True:
         display_board(board)
         print(f'Player {get_attribute(turn)} won!')
         exit()
-    turn = not turn     # Changes whose turn it is
+    elif turn_counter == 8:
+        print('Draw!')
+        exit()
+    turn = not turn  # Changes whose turn it is
+    turn_counter += 1

@@ -21,6 +21,8 @@ and prints the result and difference between actual PI and approximated PI
 
 
 def pi_approx(N):
+    # Creates a list to store all the appropriate points in
+    points = []
     for _ in range(N):
         x = uniform(-1, 1)
         y = uniform(-1, 1)
@@ -47,9 +49,6 @@ def in_unit_circle(x, y):
 # Creates to constants
 RADIUS = 1
 SQUARE_AREA = 4
-
-# Creates a list to store all the appropriate points in
-points = []
 
 # Computes
 pi_approx(100)

@@ -13,17 +13,17 @@ remain = 0
 
 # Computes when and how many boxes needs purchasing for each birthday
 # and keeps count of remaining candles and total boxes bought
-for years in range(1, MAX_AGE + 1):
+for age in range(1, MAX_AGE + 1):
     amount_box = 0
-    if years > remain:
-        while years > remain:
+    if age > remain:
+        while age > remain:
             remain += CANDLE_SIZE
             total_boxes += 1
             amount_box += 1
-        print(f'Before birthday {years}, buy {amount_box} box(es)')
-        remain -= years
+        print(f'Before birthday {age}, buy {amount_box} box(es)')
+        remain -= age
     else:
-        remain -= years
+        remain -= age
 
 # Prints to result
 print(
