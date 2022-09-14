@@ -10,7 +10,7 @@ from statistics import median
 salaries = []
 # Takes a input of a long string with salaries split only
 # with whitespaces
-temp = input('Provide salaries: ')
+temp = input('Provide salaries: ').strip()
 # Puts all of the input into a list as separate salaries by splitting
 # at whitespaces
 salaries = temp.split(' ')
@@ -35,6 +35,3 @@ the gap between the minimum and maximum salaries
 print('Median: ', round(median(salaries)))
 print('Average: ', round(avg))
 print('Gap: ', (max(salaries) - min(salaries)))
-
-
-# Fråga angående Assignment 2 uppgift 21, hur menar ni att
