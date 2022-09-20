@@ -42,6 +42,22 @@ def display_board(board):
     return board
 
 
+'''get_row_col function:
+Is called when there is wrong input given an player needs to reenter
+coordinates or player selected already played coordinates
+'''
+
+
+def get_row_col():
+    # Gets the row and column input of the user of where to place there symbol
+    row = int(
+        input(f'Player {get_attribute(turn)}, which row do you play? '))
+    col = int(
+        input(f'Player {get_attribute(turn)}, which column do you play? '))
+    # Makes the move with the input
+    move(board, col, row, turn)
+
+
 ''' get_attribute function:
 Checks what the different "squares" on the board have for symbol or
 if they are blank and returns the corresponding symbol as a string
@@ -64,15 +80,17 @@ exists a symbol at the given position request new input
 
 
 def move(board, col, row, turn):
-    if board[row - 1][col - 1] is None:
+    if row > 3 or col > 3:
+        print('Select an actual spot on the board.')
+        get_row_col()
+    elif row < 1 or col < 1:
+        print('Select an actual spot on the board.')
+        get_row_col()
+    elif board[row - 1][col - 1] is None:
         board[row - 1][col - 1] = turn
     else:
         print('Select an empty spot on the board.')
-        row = int(
-            input(f'Player {get_attribute(turn)}, which row do you play? '))
-        col = int(
-            input(f'Player {get_attribute(turn)}, which column do you play? '))
-        move(board, col, row, turn)
+        get_row_col()
 
 
 '''
@@ -99,13 +117,8 @@ while True:
     # Displays the current board
     display_board(board)
 
-    # Gets the row and column input of the user of where to place there symbol
-    row = int(input(f'Player {get_attribute(turn)}, which row do you play? '))
-    col = int(
-        input(f'Player {get_attribute(turn)}, which column do you play? '))
-
-    # Makes the move with the input
-    move(board, col, row, turn)
+    # Asks for row and column player wants to put their symbol
+    get_row_col()
 
     # Checks if there is a winning combination on the board
     if winner(board):

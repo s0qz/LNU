@@ -47,14 +47,15 @@ Description:
 		I create five different functions: winner(Checks if there is a winning set
 		on the board), check_for_win(is used by winner to make sure it doesn't 
 		give a win if neither player has made a move), display_board(which prints
-		the board to the screen), move(gets input passed to it and checks if that
-		given square is already occupied if so requests new input if square is not
-		occupied then places current players symbol in given location), 
-		get_attribute(is used by display_board and move functions to make sure
-		right symbol is placed and to check if a square is neutral and in that 
-		case print that symbol). After a player has made their move I check for
-		a win and if no win it checks if turn counter equal to 8 and if it is 
-		there is a draw.
+		the board to the screen), get_row_col(ask for input from the player and then
+		calls the move function with that input), move(gets input passed to it and
+		checks if that given square is already occupied if so requests new input
+		if square is not occupied then places current players symbol in given
+		location), get_attribute(is used by display_board and move functions to
+		make sure right symbol is placed and to check if a square is neutral and
+		in that case print that symbol). After a player has made their move the
+		program checks for a win and if no win it checks if turn counter equal
+		to 8 and if it is there is a draw.
 
 	salary_revision.py:
 		I create a list to store all the different salaries in then I take a 
