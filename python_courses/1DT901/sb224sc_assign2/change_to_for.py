@@ -10,7 +10,7 @@ while count < 100:
     sum = sum + count
     count = count + 1
 
-print(count)    # Is it supposed to print sum? Otherwise sum is useless
+print(sum)
 
 #########################################################################
 
@@ -21,4 +21,4 @@ for i in range(100):
     sum += count
     count += 1
 
-print(count)    # Is it supposed to print sum? Otherwise sum is useless
+print(sum)

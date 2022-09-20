@@ -54,8 +54,14 @@ Description:
 		right symbol is placed and to check if a square is neutral and in that 
 		case print that symbol). After a player has made their move I check for
 		a win and if no win it checks if turn counter equal to 8 and if it is 
-		their is a draw.
-
+		there is a draw.
 
 	salary_revision.py:
-
+		I create a list to store all the different salaries in then I take a 
+		long string input of all the salaries and split that string at every
+		space character so that all the salaries become their own value.
+		Afterwards I convert every index of the list to integers and add all
+		of the stored values together to compute the average salary later.
+		Then I divide the value of all summed up salaries by the amount of
+		salaries in the list, then I sort the list to compute the median
+		value of the list.
