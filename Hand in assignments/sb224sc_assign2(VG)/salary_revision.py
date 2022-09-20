@@ -35,6 +35,3 @@ the gap between the minimum and maximum salaries
 print('Median: ', round(median(salaries)))
 print('Average: ', round(avg))
 print('Gap: ', (max(salaries) - min(salaries)))
-
-
-# Fråga angående Assignment 2 uppgift 21, hur menar ni att
