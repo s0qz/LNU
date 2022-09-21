@@ -4,11 +4,12 @@
 # Date: 06-Sep-2022
 
 from random import randint
-magic_ball = ['Ask again later',
-              'As I see it, yes',
-              'Concentrate and ask again',
-              'Better not tell you now',
-              'Very doubtful']
+magic = ['Ask again later',
+         'As I see it, yes',
+         'Concentrate and ask again',
+         'Better not tell you now',
+         'Very doubtful']
+
 i = 'None'
 
 while i != 'stop':
@@ -16,4 +17,4 @@ while i != 'stop':
     if i == 'stop':
         exit()
     else:
-        print(f'The magic 8-ball says: {magic_ball[randint(0, 4)]}')
+        print(f'The magic 8-ball says: {magic[randint(0, len(magic))]}')
