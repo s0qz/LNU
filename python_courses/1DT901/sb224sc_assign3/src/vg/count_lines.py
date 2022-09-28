@@ -16,6 +16,6 @@ def count_py_lines(dir_path):
     return count
 
 
-os.getcwd()
-os.chdir('../../../')
+os.chdir('./python_courses/1DT901')
+
 print(count_py_lines(os.getcwd()))
