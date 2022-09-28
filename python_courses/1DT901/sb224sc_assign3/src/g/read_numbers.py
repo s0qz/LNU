@@ -1,4 +1,3 @@
-import os
 from math import sqrt
 
 
@@ -50,9 +49,7 @@ def open_file_b():
     return lst
 
 
-os.getcwd()
 path = ('./src/data/file_10k_integers/')
-# path = os.getcwd()
 
 file_a = f'{path}file_10k_integers_A.txt'
 file_b = f'{path}file_10k_integers_B.txt'

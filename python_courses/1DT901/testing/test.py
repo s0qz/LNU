@@ -21,6 +21,6 @@ os.chdir('..')
 dir_path = (os.getcwd())
 
 path = ('/mnt/c/Users/samue/Documents/Visual Studio Code/LNU/' +
-        'python_courses/1DT901')
+        'python_courses/1DT901/testing')
 
-print(count_py_lines(dir_path))
+print(count_py_lines(path))
