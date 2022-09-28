@@ -17,9 +17,10 @@ def count_py_lines(dir_path):
 
 
 os.getcwd()
-os.chdir('./python_courses/1DT901/')
+os.chdir('..')
 dir_path = (os.getcwd())
+
 path = ('/mnt/c/Users/samue/Documents/Visual Studio Code/LNU/' +
         'python_courses/1DT901')
 
-print(count_py_lines(path))
+print(count_py_lines(dir_path))
