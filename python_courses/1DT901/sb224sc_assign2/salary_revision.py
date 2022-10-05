@@ -3,14 +3,16 @@
 # Author: Samuel Berg
 # Date: 11-Sep-2022
 
-# imports the median function from the statistics library
-from statistics import median
+def median(lst):
+    mid = len(lst) // 2
+    return (lst[mid] + lst[~mid]) / 2
+
 
 # Creates a list to store the salaries in
 salaries = []
 # Takes a input of a long string with salaries split only
 # with whitespaces
-temp = input('Provide salaries: ').strip()
+temp = input('Provide salaries: ')
 # Puts all of the input into a list as separate salaries by splitting
 # at whitespaces
 salaries = temp.split(' ')
