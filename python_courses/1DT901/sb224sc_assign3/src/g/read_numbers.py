@@ -18,38 +18,38 @@ def std(lst):
 
 
 def open_file_a():
-    file = open(file_a, 'r')
-    temp = file.readlines()
-    lst = []
-    num = ''
-    for line in temp:
-        line = line.replace(', ', ' ')
-        line = line.replace('\n', ' ')
-        for number in line:
-            if ord(number) == 32:
-                lst.append(int(num))
-                num = ''
-            else:
-                num += number
+    with open(file_a, 'r') as file:
+        temp = file.readlines()
+        lst = []
+        num = ''
+        for line in temp:
+            line = line.replace(', ', ' ')
+            line = line.replace('\n', ' ')
+            for number in line:
+                if ord(number) == 32:
+                    lst.append(int(num))
+                    num = ''
+                else:
+                    num += number
     return lst
 
 
 def open_file_b():
-    file = open(file_b, 'r')
-    temp = file.readlines()
-    lst = []
-    num = ''
-    for line in temp:
-        for number in line + chr(58):
-            if ord(number) == 58:
-                lst.append(int(num))
-                num = ''
-            else:
-                num += number
+    with open(file_b, 'r') as file:
+        temp = file.readlines()
+        lst = []
+        num = ''
+        for line in temp:
+            for number in line + chr(58):
+                if ord(number) == 58:
+                    lst.append(int(num))
+                    num = ''
+                else:
+                    num += number
     return lst
 
 
-path = ('./src/data/file_10k_integers/')
+path = ('./data/file_10k_integers/')
 
 file_a = f'{path}file_10k_integers_A.txt'
 file_b = f'{path}file_10k_integers_B.txt'
@@ -59,5 +59,5 @@ lst_b = open_file_b()
 
 print('Results for file A:')
 print(f'mean = {mean(lst_a)}, standard deviation = {std(lst_a)}')
-print('Results for file B:')
+print('\nResults for file B:')
 print(f'mean = {mean(lst_b)}, standard deviation = {std(lst_b)}')

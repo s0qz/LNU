@@ -3,8 +3,10 @@ import os
 
 def count_directories(dir_path):  # Returns the number of directories
     folders = 0
-    for _, dirnames, _ in os.walk(dir_path):
-        folders += len(dirnames)
+    entries = os.scandir(dir_path)
+    for entry in entries:
+        if entry.is_dir():
+            folders += 1
     return folders
 
 
