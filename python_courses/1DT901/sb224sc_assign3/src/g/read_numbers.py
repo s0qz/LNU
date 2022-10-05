@@ -1,4 +1,5 @@
 from math import sqrt
+import os
 
 
 def mean(lst):
@@ -49,7 +50,8 @@ def open_file_b():
     return lst
 
 
-path = ('./data/file_10k_integers/')
+path = os.getcwd()
+path = path + ('/data/file_10k_integers/')
 
 file_a = f'{path}file_10k_integers_A.txt'
 file_b = f'{path}file_10k_integers_B.txt'
