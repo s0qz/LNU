@@ -7,5 +7,3 @@
     # Computation
 
     # Result
-
-
