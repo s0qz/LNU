@@ -25,7 +25,7 @@ Additional limitations:
 
 * The BST based map is a linked implementation where each node has four fields (key, value, left-child, right-child). 
 * The hash-based set is built using a Python list to store the buckets where each bucket is another Python list. The initial bucket list size is 8 and rehashing (double the bucket list size) takes place when the number of elements equals the number of buckets. 
-* Furthermore, code skeletons outlining which methods we expect for each data structure are available [here](project_skeleton.zip). They also contains an example program showing how the various methods can be used.
+* Furthermore, code skeletons outlining which methods we expect for each data structure are available [here](code_skeleton.zip). They also contains an example program showing how the various methods can be used.
 
 **Notice:** You are not allowed to make any changes of the method signatures in the given skeletons. Also, the demo programs should work as outlined in the provided example programs once your implementations are complete. Your task is simply to complete the given code fragments in the skeletons. However, feel free to add additional methods. 
 
@@ -34,7 +34,7 @@ Additional limitations:
 In this exercise you should basically repeat Part 1 using your own data structures rather than Python's. Using your hash based set and BST based map you should:
 
 1. Count how many unique words that are used in the two given texts files using your **HashSet** implementation.
-2. Present a list of the top-10 most frequently used words having a length larger than 4 using your **BstMap** implementation. 
+2. Present a list of the top-10 most frequently used words having a length larger than 4 using your **BstMap** implementation.
 3. What is the max bucket size for hash table after having added all words in the large text files (Life of Brian and News items respectively)?
 4. What is the max depth of the BST when adding all words (as both key and value) from the large text files (Life of Brian and News items respectively)?
 

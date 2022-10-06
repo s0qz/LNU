@@ -33,6 +33,9 @@ class Node:
     def max_depth(self):
         pass     # Placeholder code ==> to be replaced
 
+    def count_leafs(self):
+        pass     # Placeholder code ==> to be replaced
+
     # We do a left-to-right in-order traversal of the tree
     # to get the key-value pairs sorted base on their keys
     def as_list(self, lst):
@@ -87,6 +90,14 @@ class BstMap:
             return 0
         else:
             return self.root.max_depth()
+
+    # Returns a leaf node count. That is, the number of nodes 
+    # with no children
+    def count_leafs(self):
+        if self.root is None:
+            return 0
+        else:
+            return self.root.count_leafs()
 
     # Returns a sorted list of all key-value pairs in the map.
     # Each key-value pair is represented as a tuple and the

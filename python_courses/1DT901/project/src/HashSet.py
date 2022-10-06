@@ -47,3 +47,8 @@ class HashSet:
     # Returns the size of the bucket with most elements
     def max_bucket_size(self):
         pass    # Placeholder code ==> to be replaced
+
+    # Returns the ratio of buckets of lenght zero.
+    # That is: number of zero buckets divided by number of buckets
+    def zero_bucket_ratio(self):
+        pass    # Placeholder code ==> to be replaced

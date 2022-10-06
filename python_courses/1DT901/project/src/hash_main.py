@@ -22,6 +22,8 @@ mx = words.max_bucket_size()
 print("\nmax bucket:", mx)                # 2
 buckets = words.bucket_list_size()
 print("bucket list size:", buckets)     # 16
+zero_buckets_ratio = words.zero_bucket_ratio()
+print("zero bucket ratio:", round(zero_buckets_ratio, 2))  # 0.38
 
 # Remove elements
 delete = ["Ceve", "Adam", "Ceve", "Jonas", "Ola"]

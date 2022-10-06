@@ -1,4 +1,3 @@
-# from dataclasses import dataclass
 import BstMap as bst
 
 # Program starts
@@ -16,10 +15,11 @@ map.put("Zoe", 99)
 map.put("Ceve", 100)
 print(map.to_string())       # { (Adam,27) (Ceve,100) (Ella,39) (Fred,44) (Owen,40) (Zoe,99) }
 
-# get
+# get, max_depth, count_leafs
 print("\nGet(Fred):", map.get("Fred"))    # 44
 print("Get(Jonas):", map.get("Jonas"))  # None
 print("Max depth:", map.max_depth())     # 3
+print("Count leafs:", map.count_leafs())  # 3
 
 # Check max_depth
 map.put("AA", 1)
@@ -29,6 +29,7 @@ map.put("AAAAA", 4)
 
 print("\nSize:", map.size())              # 10
 print("Max depth:", map.max_depth())    # 6
+print("Count leafs:", map.count_leafs())  # 4
 print("To_string: ", map.to_string())    # { (AA,1) (AAA,2) (AAAA,3) (AAAAA,4) (Adam,27) (Ceve,100) (Ella,39) (Fred,44) (Owen,40) (Zoe,99) }
 
 # as_list
