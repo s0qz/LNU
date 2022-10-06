@@ -7,15 +7,20 @@ def get_words(path, file_name):
     with open(path + file_name, 'r', encoding='utf-8') as f:
         original = f.readlines()
         for line in original:
+            line = line.lower()
             line = line.replace('-', '')
             line = line.replace("'", '')
-            line = line.replace(' ', '\n')
+            line = line.replace('.', ' ')
+            line = line.replace(',', ' ')
+            line = line.replace('!', ' ')
+            line = line.replace('?', ' ')
+            line = line.replace(":", ' ')
             line = line.strip('\n')
-            temp.append(line.split('\n'))
+            temp.append(line.split(' '))
 
         for line in temp:
             for word in line:
-                if word.isalpha():
+                if word.isalpha() or word.isspace():
                     allowed_words.append(word)
         return allowed_words
 
