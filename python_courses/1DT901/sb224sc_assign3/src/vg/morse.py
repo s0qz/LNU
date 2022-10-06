@@ -1,3 +1,8 @@
+# Character.py
+#
+# Author: Samuel Berg
+# Date: 04-Oct-2022
+
 morse_dict = {
     'a': '.-', 'k': '-.-', 'u': '..-',
     'b': '-...',  'l': '.-..',  'v': '...-',

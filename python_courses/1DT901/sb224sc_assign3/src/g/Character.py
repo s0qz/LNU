@@ -1,3 +1,8 @@
+# Character.py
+#
+# Author: Samuel Berg
+# Date: 03-Oct-2022
+
 class Character:
     def __init__(self, name=None, kind=None, planet=None):
         self.name = name

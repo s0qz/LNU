@@ -1,3 +1,8 @@
+# Character.py
+#
+# Author: Samuel Berg
+# Date: 05-Oct-2022
+
 from math import sqrt
 import os
 

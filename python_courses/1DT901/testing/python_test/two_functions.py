@@ -1,21 +1,34 @@
+# triangle.py
+#
+# Author: Samuel Berg
+# 06-Oct-2022
+
 def positive_int(float_lst):
     int_lst = []
     for i in float_lst:
-        if (i > 0):
+        if i > 0:
             int_lst.append(round(i))
-
     return int_lst
 
 
 def largest_K(N):
-    iterator = 1
-    sum = 0
-    while ((sum + iterator) < N):
-        sum += iterator
-        iterator += 2
-    return sum
+    tot = 0
+    count = 1
+    while (tot + count) <= N:
+        tot += count
+        count += 2
+    count -= 2
+    return count
 
 
-float_lst = [1.3, 2.67, -2.25, 4.88]
-print(positive_int(float_lst))
-print(largest_K(3))
+# Demonstration code
+lst = [1.3, 2.67, -2.25, 4.88]
+N = 40
+
+print(lst)
+print(positive_int(lst))
+
+print(f'N = {N}')
+print(largest_K(N))
+
+# Completed

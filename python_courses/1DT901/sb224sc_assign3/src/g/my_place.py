@@ -1,6 +1,11 @@
 import os
 
 
+# Character.py
+#
+# Author: Samuel Berg
+# Date: 03-Oct-2022
+
 def count_directories(dir_path):  # Returns the number of directories
     folders = 0
     entries = os.scandir(dir_path)

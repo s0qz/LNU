@@ -1,3 +1,8 @@
+# Character.py
+#
+# Author: Samuel Berg
+# Date: 02-Oct-2022
+
 from random import randint
 
 

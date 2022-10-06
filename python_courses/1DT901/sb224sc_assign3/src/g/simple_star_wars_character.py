@@ -1,3 +1,8 @@
+# Character.py
+#
+# Author: Samuel Berg
+# Date: 03-Oct-2022
+
 import Character
 
 
