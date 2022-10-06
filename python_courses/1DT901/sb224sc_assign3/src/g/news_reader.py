@@ -20,9 +20,10 @@ def get_words(path, file_name):
 
         for line in temp:
             for word in line:
-                # if len(word.replace(' ', '')) == 1:   Removed segment due to
-                #     if word == 'a' or word == 'i':    only applicable for
-                #         allowed_words.append(word)    english not swedish
+                if len(word.replace(' ', '')) == 1:   # Changed segment due
+                    if (word == 'ö' or word == 'i'    # to different for
+                            or word == 'å'):          # english and swedish
+                        allowed_words.append(word)
                 if word.isalpha() or word.isspace():
                     allowed_words.append(word)
         return allowed_words
