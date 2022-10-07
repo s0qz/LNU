@@ -1,18 +1,26 @@
-# Character.py
+# move_dir.py
 #
 # Author: Samuel Berg
 # Date: 04-Oct-2022
 
 import os
 
-
-#  Returns a list of strings with the names of the directories
+'''list_dir(dir_path):
+Returns a list with all of the directories
+directly below current directory.
+'''
 
 
 def list_dir(dir_path):
     entries = os.scandir(dir_path)
     list_of_dirs, _ = is_entries(entries)
     return list_of_dirs
+
+
+'''is_entries(list_of_entries):
+Returns a list with all of the directories
+ and files directly below current directory.
+'''
 
 
 def is_entries(list_of_entries):
@@ -25,7 +33,11 @@ def is_entries(list_of_entries):
             files.append(entry.name)
     return dirs, files
 
-#  Returns a list of strings with the names of the files
+
+'''list_files(dir_path):
+Returns a list with all of the files
+directly below current directory.
+'''
 
 
 def list_files(dir_path):
@@ -34,6 +46,7 @@ def list_files(dir_path):
     return list_of_files
 
 
+# Main code
 while True:
     print('1. List directories')
     print('2. Change directory')
@@ -42,6 +55,8 @@ while True:
 
     n = input('\n==> ')
 
+    # Computes what the program should do depending
+    # on the user input an calls the corresponding function.
     if n == '1':
         for dirs in list_dir(os.getcwd()):
             print(dirs)

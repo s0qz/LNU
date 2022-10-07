@@ -1,9 +1,18 @@
-# Character.py
+# life_of_brian.py
 #
 # Author: Samuel Berg
 # Date: 06-Oct-2022
 
 import os
+
+'''get_words(path, file_name):
+Opens the specified file in the specified path
+and converts each line into a index in a
+list and then replaces all the specified characters
+into spaces. Then it strips each line of new line
+characters and then adds it all to a new list split
+at each space character.
+'''
 
 
 def get_words(path, file_name):
@@ -26,11 +35,18 @@ def get_words(path, file_name):
         for line in temp:
             for word in line:
                 if len(word.replace(' ', '')) == 1:
-                    if word == 'a' or word == 'i':
+                    if (word == 'a' or word == 'i'
+                            or word == 'å' or word == 'ö'):
                         allowed_words.append(word)
                 elif word.isalpha() or word.isspace():
                     allowed_words.append(word)
         return allowed_words
+
+
+'''save_words(path, name, words):
+Creates a new file in specified path with given name
+and computed words.
+'''
 
 
 def save_words(path, name, words):
@@ -39,6 +55,7 @@ def save_words(path, name, words):
             f.write(word + '\n')
 
 
+# Main code
 path = os.getcwd()
 input_file = '/data/life_of_brian.txt'
 

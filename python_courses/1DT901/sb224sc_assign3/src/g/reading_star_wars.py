@@ -1,4 +1,4 @@
-# Character.py
+# reading_star_wars.py
 #
 # Author: Samuel Berg
 # Date: 05-Oct-2022
@@ -6,7 +6,7 @@
 import os
 import Character
 
-
+# Main code
 path = os.getcwd()
 file = '/data/starwars.txt'
 counter = 0

@@ -1,10 +1,14 @@
-# Character.py
+# read_numbers.py
 #
 # Author: Samuel Berg
 # Date: 05-Oct-2022
 
 from math import sqrt
 import os
+
+'''mean(lst):
+Computes the mean value of the given lst.
+'''
 
 
 def mean(lst):
@@ -14,6 +18,11 @@ def mean(lst):
     return round(tot_val / len(lst), 1)
 
 
+'''std(lst):
+Computes the standard deviation value of the given lst.
+'''
+
+
 def std(lst):
     temp_lst = []
     avg = mean(lst)
@@ -21,6 +30,19 @@ def std(lst):
         temp = (i - avg) ** 2
         temp_lst.append(temp)
     return round(sqrt(mean(temp_lst)), 1)
+
+
+'''open_file_a():
+Opens specified file in specified path
+and converts each line into a index in a
+list which then it replaces all the "," and
+new line characters with spaces. Then
+it goes through each line and when it
+finds the " " character it adds the
+found numbers before that space in a
+row to a list which is returned on
+completion.
+'''
 
 
 def open_file_a():
@@ -40,6 +62,17 @@ def open_file_a():
     return lst
 
 
+'''open_file_b():
+Opens specified file in specified path
+and converts each line into a index in a
+list. Then it goes through each line and when it
+finds the ":" character it adds the
+found numbers before that space in a
+row to a list which is returned on
+completion.
+'''
+
+
 def open_file_b():
     with open(file_b, 'r') as file:
         temp = file.readlines()
@@ -55,6 +88,7 @@ def open_file_b():
     return lst
 
 
+# Main code
 path = os.getcwd()
 path = path + ('/data/file_10k_integers/')
 

@@ -1,9 +1,15 @@
-# Character.py
+# file_reader.py
 #
 # Author: Samuel Berg
 # Date: 04-Oct-2022
 
 import os
+
+'''reading(path, name):
+Opens file if it exists in current directory with
+the given name then reads every line into a list
+which then gets printed out line by line.
+'''
 
 
 def reading(path, name):
@@ -16,6 +22,7 @@ def reading(path, name):
             print(line)
 
 
+# Main code
 path = os.getcwd()
 path = path + '/out'
 

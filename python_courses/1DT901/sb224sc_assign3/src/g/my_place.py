@@ -1,10 +1,14 @@
-import os
-
-
-# Character.py
+# my_place.py
 #
 # Author: Samuel Berg
 # Date: 03-Oct-2022
+
+import os
+'''count_directories(dir_path):
+Counts all the directories directly below
+current directory for the given path.
+'''
+
 
 def count_directories(dir_path):  # Returns the number of directories
     folders = 0
@@ -15,6 +19,12 @@ def count_directories(dir_path):  # Returns the number of directories
     return folders
 
 
+'''count_files(dir_path):
+Counts all the files directly below
+current directory for the given path.
+'''
+
+
 def count_files(dir_path):  # Returns the number of files
     files = 0
     for _, _, filenames in os.walk(dir_path):
@@ -22,8 +32,10 @@ def count_files(dir_path):  # Returns the number of files
         return files
 
 
+# Main code
 path = os.getcwd()
 
+# Prints the results
 print(f'I am right now at: {path}')
 print(f'Below me I have {count_directories(path)} directories/folders')
 print(f'This directory contains {count_files(path)} files')

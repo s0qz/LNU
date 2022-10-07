@@ -1,4 +1,4 @@
-# Character.py
+# Deque.py
 #
 # Author: Samuel Berg
 # Date: 05-Oct-2022
