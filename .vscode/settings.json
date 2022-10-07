@@ -3,5 +3,6 @@
     "python.linting.flake8Enabled": true,
     "cSpell.words": [
         "dcba"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "basic"
 }
