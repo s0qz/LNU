@@ -25,7 +25,10 @@ class HashSet:
 
     # Returns a string representation of the set content
     def to_string(self):
-        pass    # Placeholder code ==> to be replaced
+        s = "{ "
+
+        s += "}"
+        return s
 
     # Returns current number of elements in set
     def get_size(self):
