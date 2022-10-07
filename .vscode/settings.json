@@ -4,5 +4,5 @@
     "cSpell.words": [
         "dcba"
     ],
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "off"
 }
