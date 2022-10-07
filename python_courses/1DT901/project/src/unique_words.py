@@ -10,22 +10,19 @@ import os
 
 def open_news():
     with open(swe_news_txt, 'r') as file:
-        lst = file.readlines()
-    return lst
+        return file.readlines()
 
 
 def open_brian():
     with open(life_of_brian_txt, 'r') as file:
-        lst = file.readlines()
-    return lst
+        return file.readlines()
 
 
 def count_unique_words(lst):
     myset = set()
     for i in range(len(lst)):
         myset.add(lst[i])
-    new_lst = list(myset)
-    return len(new_lst)
+    return len(list(myset))
 
 
 def get_top10(lst):
@@ -36,10 +33,6 @@ def get_top10(lst):
         if striped_word not in all_count:
             all_count[striped_word] = 0
         all_count[striped_word] += 1
-    '''
-    iterate over all_count and remove the 10 most frequent words
-    after adding them to the top10 dict
-    '''
     for _ in range(10):
         highestfreq_val = 0
         highestfreq_key = ''
