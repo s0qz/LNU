@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import io
 import lzma
+from random import shuffle
 from time import time
 from typing import List
 
@@ -15,16 +16,18 @@ def get_words(path: str, file_name: str) -> List[str]:
 
 
 def top_ten(lst: List[str]) -> List[str]:
-    items = bst.BstMap()
+    tree = bst.BstMap()
+    shuffle(lst)
     for item in lst:
-        a = items.get(item)
-        if a is None:
-            a = 0
-        items.put(item, a + 1)
+        item = item.strip()
+        if len(item) > 4:
+            a = tree.get(item)
+            if a is None:
+                a = 0
+            tree.put(item, a + 1)
 
-    tree = items
     # Dra ut allting kortare än 4 bokstäver
-    items = [item for item in items.as_list() if len(item[0]) > 5]
+    items = tree.as_list()
     # Sortera efter hur ofta det förekommer
     items = sorted(items, key=lambda x: items[x[1]], reverse=True)
     return items[:10], tree
@@ -55,5 +58,5 @@ for file_name in ["life_of_brian.txt.xz", "swe_news.txt.xz"]:
     print(f" Amount of leafs on tree {tt_tree.count_leafs()}")
     print(" The most used words were")
     for index, value in enumerate(tt):
-        print(f"  {index + 1}. {value[0].rstrip()}")
+        print(f"  {index + 1}. {value[0]}: {value[1]}")
     print(f"\n Elapsed time {round(time() - start, 2)} seconds\n")

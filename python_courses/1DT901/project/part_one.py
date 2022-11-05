@@ -14,8 +14,10 @@ def top_ten(lst: List[str]) -> List[str]:
     items: Dict[str, int] = dict()
     for item in lst:
         items[item] = items.get(item, 0) + 1
-    sorted_keys = sorted(items, key=items.get, reverse=True)
-    return [key for key in sorted_keys if len(key) > 5][:10]
+    sorted_keys: List[str] = sorted(items, key=items.get, reverse=True)
+    top_keys = [key for key in sorted_keys if len(key.rstrip()) > 4][:10]
+
+    return [(key, items[key]) for key in top_keys]
 
 
 for file_name in ["life_of_brian.txt.xz", "swe_news.txt.xz"]:
@@ -27,4 +29,4 @@ for file_name in ["life_of_brian.txt.xz", "swe_news.txt.xz"]:
     print(f" The total amount of unique words were {unique_words}")
     print(" The most used words were")
     for index, value in enumerate(tt):
-        print(f"  {index + 1}. {value.rstrip()}")
+        print(f"  {index + 1}. {value[0].rstrip()}: {value[1]}")

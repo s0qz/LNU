@@ -13,6 +13,8 @@ class HashSet:
 
     # Computes hash value for a word (a string)
     '''
+    https://stackoverflow.com/questions/2624192/good-hash-function-for-strings
+
     Uses prime numbers to get as different hash values as possible.
     Has A starting hash_value of 7 and for every character in the
     given word change the hash_value to the value current hash_value

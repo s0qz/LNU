@@ -3,188 +3,184 @@
 Members: Samuel Berg and Love Billenius\
 Program: Software Engineering\
 Course: 1DT901\
-Date of submission: 2022-11-XX
+Date of submission: 2022-11-06
 
 ## Introduction
 
-A brief introduction including a presentation of the project tasks. Present the
-project as a part of the course 1DV501/1DT901.
+In this project we where supposed to first using builtin functions count the amount of unique words in a word file and also get the top ten most occurring words from that same file that were 5 characters or longer in length. For the second part of the project we were supposed to create two different data structures one of them being a binary search tree and the other being a hash set with a given amount of functions minimum, to solve given test programs. The third and final part was implementing the data structures we created in part two to do the same thing we did in part one not using the builtin functions `set` and `dict`. And get the same result as we did in part on.
 
 ## Part 1: Count unique words 1
 
-||life_of_brian|swedish_news_2020|
-|:--------------:|:---------:|:----:|
-|**Unique words**|1997|380018|
-|**Nr 1 word**|Brian|Säger|
-|**Nr 2 word**|Crowd|Under|
-|**Nr 3 word**|Centurion  |Kommer|
-|**Nr 4 word**|Mother|Efter|
-|**Nr 5 word**|Right|Eller|
-|**Nr 6 word**|Crucifixion|Också|
-|**Nr 7 word**|Pilate|Andra|
-|**Nr 8 word**|Pontius|Finns|
-|**Nr 9 word**|Rogers|Sedan|
-|**Nr 10 word**|There|Skulle|
+  ||life_of_brian|swedish_news_2020|
+  |:--------------:|:---------:|:----:|
+  |**Unique words**|1997|380018|
+  |**Nr 1 word**|Brian: 368|Säger: 47514|
+  |**Nr 2 word**|Crowd: 161|Under: 45096|
+  |**Nr 3 word**|Centurion: 121|Kommer: 42347|
+  |**Nr 4 word**|Mother: 104|Efter: 36591|
+  |**Nr 5 word**|Right: 100|Eller: 30716|
+  |**Nr 6 word**|Crucifixion: 78|Också: 30113|
+  |**Nr 7 word**|Pilate: 68|Andra: 27189|
+  |**Nr 8 word**|Pontius: 64|Finns: 27046|
+  |**Nr 9 word**|Rogers: 52|Sedan: 24918|
+  |**Nr 10 word**|There: 44|Skulle: 23550|
 
-For the top ten function we used a dictionary and a list of all words. For each
-new word, we added an entry with the value one, and for each existing we
-incremented the existing value with one.
+  For the top ten function we used a dictionary and a list of all words. For each
+  new word, we added an entry with the value one, and for each existing we
+  incremented the existing value with one.
 
-```python
-for item in lst:
-    items[item] = items.get(item, 0) + 1
-```
+  ```python
+  for item in lst:
+      items[item] = items.get(item, 0) + 1
+  ```
 
-Afterwards we sorted the dictionary after the values, and sorted the dictionary,
-to then return the last ten elements.
+  Afterwards we sorted the dictionary after the values, and sorted the dictionary,
+  to then return the last ten elements.
 
 ## Part 2: Implementing data structures
 
-```python
-def get_hash(self, word: str) -> int:
-    hash_value = 7
-    for character in word:
-        hash_value = hash_value * 31 + ord(character)
-    return hash_value % len(self.buckets)
+  The given requirements for this part was that we would construct a hashset and a binary search tree in python, without using any of the already built sets and maps in python. We were not allowed to modify some parts of code skeletons given, which in turn meant that all functions in BstMap were needed to implement recursively.
 
-def rehash(self) -> None:
-    old_buckets = self.buckets
-    self.buckets = [[] for _ in range(len(self.buckets) * 2)]
-    self.size = 0
+  ```python
+  def add(self, word: str) -> None:
+      if self.size > len(self.buckets):
+          self.rehash()
 
-    for bucket in old_buckets:
-        for element in bucket:
-            self.add(element)
+      if not self.contains(word):
+          self.buckets[self.get_hash(word)].append(word)
+          self.size += 1
+  ```
 
-def add(self, word: str) -> None:
-    if self.size > len(self.buckets):
-        self.rehash()
+  We add "things" to the hash set by first checking wether we need to do a rehash or not if it is needed it is done as stated below, if it is not required then if the current "thing" we are trying to add is not in any of the buckets then we add it to the bucket with the hash value of that word and increment the size by one.
 
-    if not self.contains(word):
-        self.buckets[self.get_hash(word)].append(word)
-        self.size += 1
-```
+  We compute our hash value by starting on a prime number which in this case is `hash_value = 7` which we start on for every word. For every character in given word we take the current value of the hash value and multiply it by another prime that we choose to be 31 and after doing so add to it the ASCII value of the character and set the `hash_value` equal to the computed value and repeat that process for every character in the given word. After the entire words hash value has been computed it is divided by the current total amount of buckets and the remainder value that is then given is the bucket we allocate the word to. We got inspiration from this <https://stackoverflow.com/questions/2624192/good-hash-function-for-strings>.
 
-The example output differs from out output in `hash_main.py`, which occurs due
-to us using a more efficient hashing algorithm.
+  We compute the rehashing by taking all the current buckets and assigning them to an local variable and then generating a new "list" of buckets with dubble the amount of buckets. Then setting the size of that "list" equal to zero and then adding back all of the values assigned to the local variable to the new "list" one by one.
 
-- Give a brief presentation of the given requirements
+  The example output differs from out output in `hash_main.py`, which occurs due
+  to us using a more efficient hashing algorithm.
 
-- For the hash based word set (HashSet), present (and explain in words):
+  ```python
+  def put(self, key: Any, value: Any) -> None:
+      if self.key == key:
+          self.value = value
+      elif key < self.key:
+          if self.left is None:
+              self.left = Node(key, value, None, None)
+          else:
+              self.left.put(key, value)
+      else:
+          if self.right is None:
+              self.right = Node(key, value, None, None)
+          else:
+              self.right.put(key, value)
 
-  - Python code for function `add`, how to compute the hash value, and
-    rehashing.
+  def max_depth(self) -> int:
+      left, right = 0, 0
 
-  - Point out and explain any differences from the given results in
-    `hash_main.py`
+      if self.left is not None:
+          left = self.left.max_depth()
+      if self.right is not None:
+          right = self.right.max_depth()
+          
+      return max(right, left) + 1
+  ```
+  
+  For `put` we check if the key is equal to this nodes key, and if that is true, then we set this nodes value to the value passed in. if the key is less than this nodes key, then we check if the node left of this node is None. If it is, then we create a new node that we put left of this node. If there however is a node left of this node, then we call that nodes put method with the same values that we got. We then do the same but for right.
 
-```python
-def put(self, key: Any, value: Any) -> None:
-    if self.key == key:
-        self.value = value
-    elif key < self.key:
-        if self.left is None:
-            self.left = Node(key, value, None, None)
-        else:
-            self.left.put(key, value)
-    else:
-        if self.right is None:
-            self.right = Node(key, value, None, None)
-        else:
-            self.right.put(key, value)
+  To compute the `max_depth` we first create a left and right variable, then we first check the lest node for the root if the left node is not none then we call this function recursively for the left node and the result of that call will be equal to the `left` variable create in the start of the function. If the left node is none then we check the right node if it is not none then we put the `right` variable equal to the recursive call of this function for the right node. When both the left and right node of current node is equal to none then we return the greater of `left` & `right` + 1.
 
-def max_depth(self) -> int:
-    # Create variables for each sides depth
-    left, right = 0, 0
-    # If current nodes left or right is None ignore
-    if self.left is not None:
-        left = self.left.max_depth()
-    if self.right is not None:
-        right = self.right.max_depth()
-```
-
-- For the BST based map (BstMap), present (and explain in words):
-
-  - Python code for the two functions `put` and `max_depth`.
-
-  - Point out and explain any differences from the given results in
-    `bst_main.py`.
+  There isn't any differences in the results given in `bst_main.py`
 
 ## Part 3: Count unique words 2
 
-||life_of_brian|swedish_news_2020|
-|:--------------:|:---------:|:----:|
-|**Unique words**|1997|380018|
-|**Nr 1 word**|Brian|Säger|
-|**Nr 2 word**|Crowd|Under|
-|**Nr 3 word**|Centurion|Kommer|
-|**Nr 4 word**|Mother|Efter|
-|**Nr 5 word**|Right|Eller|
-|**Nr 6 word**|Crucifixion|Också|
-|**Nr 7 word**|Pilate|Andra|
-|**Nr 8 word**|Pontius|Finns|
-|**Nr 9 word**|Rogers|Sedan|
-|**Nr 10 word**|There|Skulle|
+  ||life_of_brian|swedish_news_2020|
+  |:--------------:|:---------:|:----:|
+  |**Unique words**|1997|380018|
+  |**Nr 1 word**|Brian: 368|Säger: 47514|
+  |**Nr 2 word**|Crowd: 161|Under: 45096|
+  |**Nr 3 word**|Centurion: 121|Kommer: 42347|
+  |**Nr 4 word**|Mother: 104|Efter: 36591|
+  |**Nr 5 word**|Right: 100|Eller: 30716|
+  |**Nr 6 word**|Crucifixion: 78|Också: 30113|
+  |**Nr 7 word**|Pilate: 68|Andra: 27189|
+  |**Nr 8 word**|Pontius: 64|Finns: 27046|
+  |**Nr 9 word**|Rogers: 52|Sedan: 24918|
+  |**Nr 10 word**|There: 44|Skulle: 23550|
 
-```python
-items = bst.BstMap()
-    for item in lst:
-        a = items.get(item)
-        if a is None:
-            a = 0
-        items.put(item, a + 1)
-```
+  ```python
+  items = bst.BstMap()
+      for item in lst:
+          a = items.get(item)
+          if a is None:
+              a = 0
+          items.put(item, a + 1)
+  ```
 
-- How did you implement the Top-10 part of the problem. Feel free to show code
-  fragments.
+  To get then top ten most occurring words we iterated through all words (including duplicates) which were longer than 4 in length. Then we checked if the word was a key in our bst map. If it was then we took the value and incremented it with one. If it wasn't then we inserted the word with a value of one. Afterwards we used the bst maps .as_list() which in turn gave a list of tuples of the bst map. We then sorted that list based on the value (which were a count of how many time the key had occurred), took the reverse of that, and returned the first ten tuples. The code used to count words is inserted above.
+  
+  Max bucket size is the total amount of "things" that end up with the same hash and are put in the same bucket and is computed by iterating through all buckets and taking the length of the buckets while iterating through all of them and saving the length of the largest one in an local variable and comparing the length of the rest and if one is bigger then replace the local variable.
 
-- Present a unique word count and the Top-10 lists for each of the two files.
+  Zero bucket ratio is the total amount buckets that are empty divided by the total amount of buckets. Which returns the percentile of buckets are empty of the total and you want this as low as possible.
 
-||life_of_brian|swedish_news_2020|
-|:--------------:|:---------:|:----:|
-|**Max bucket size**|8|7|
-|**Zero bucket ratio**|0.37646484375|0.4847869873046875|
-|**Max depth**|27|48|
-|**Leaf count**|646|125341|
+  Max depth is the deepest point of the tree. Which is the point that has the most amount of branches between itself and the root.
 
-- What is the max bucket size and zero bucket ratio for HashSet, and the max
-  depth and leaf count for BstMap, after having added all the words in the two
-  large word files? (Hence, eight different Nrs.)
+  Leaf count is the amount of ending points of the tree, the ones with out any branches from themselves with the only branch attached to them is from the point in the previous "level" of the tree.
 
-- Explain how max bucket size and zero bucket ratio can be used to evaluate the
-  quality of your hash function in HashSet. What are optimal/reasonable/poor
-  values in both cases?
+  ||life_of_brian|swedish_news_2020|
+  |:--------------:|:---------:|:----:|
+  |**Max bucket size**|8|7|
+  |**Zero bucket ratio**|0.37646484375|0.4847869873046875|
+  |**Max depth**|23|44|
+  |**Leaf count**|469|121283|
 
-- Explain how max depth and leaf count can be used to evaluate the efficiency of
-  the BstMap. What are optimal/reasonable/poor values in both cases?
+  The HashSet have a list containing multiple "buckets", which in turn are lists. When a hash is calculated of a word, then the hash is normalized to the amount of buckets in the HashSet. The number that is calculated is the bucket where the entry is put. In an optimal world all entries would be in separate buckets, but since there isn't any perfect hashing-function, then some entries are bound to have the same hash, and since there isn't infinite amount of buckets, a normalization will have to happen, which in turn assures that even more entries will end up at the same bucket. The zero bucket ratio is the ratio of empty to non-empty buckets, and the max bucket size is how many elements the largest bucket have. In a true utopia the values for those would be 0% and 1 respectively. In our more disappointing reality this will end up at around ~50% and around half of the elements respectively. Really bad values would be ~95% for zero bucket ratio and for max bucket size next to all elements.
+
+  Max depth of the tree can be used in the way of knowing how balanced the tree is on each side of the head node. We think that the optimal max depth would be 19 for a tree with 367 348 different values. A reasonable max depth for the same tree would be around 40 as we got and a poor max depth would be upwards of 80+ in max depth. The optimal value we get from `log2(x)` rounded to closest integer where `x` is the total amount of nodes in the tree.
+
+  Leaf count can be used in the same way as max depth as to determine how balanced the tree actually is. If we take the same tree as mentioned in max depth the optimal leaf count would be 183 674 leafs in the tree. A reasonable amount of leafs for that same tree would probably be about 120 000 to 130 000 leafs with a poor amount of leafs being at about 90 000 to 100 000 or less. The optimal amount of leafs are computed by `(2^(n-1) - 2^(n-2)) + ((x - 2^(n-1))/2)` where `n` is the max depth of the tree and `x` is the total amount of nodes in the tree.
 
 ## Project conclusions and lessons learned
 
-We separate technical issues from project related issues.
+  The project have been great for becoming more comfortable in python as a whole.
+  Apart from that, we both have learnt how these data structures work, thorough
+  building them.
 
 ### Technical issues
 
-- What were the major technical challanges as you see it? What parts were the
-  hardest and most time consuming?
+  The hardest was not to use the language or anything similar. We both have
+  experiences programming in object oriented languages before, so there wasn't
+  anything odd about that. The hardest thing was instead to figure out how to
+  think about the problem. None of us had for instance written neither a hashset,
+  nor a binary search tree before. Once that was figured out, then it was smooth
+  sailing.
 
-- What lessons have you learned? What should you have done differently if you
-  now were facing a similar problem.
+  To be completely honest. Both me and my parter are fairly skilled in
+  programming. We have learnt how these data structures work, and are now a bit
+  more confident in python. We have not learnt any new concepts or anything like
+  that.
 
-- How could the results be improved if you were given a bit more time to
-  complete the task.
+  We finished the project long before the deadline. There isn't anything that we
+  can think of that would improve the project. I am certain that something could
+  be improved, but not anything that comes to mind.
 
 ### Project issues
 
-- Describe how your team organized the work. How did you communicate? How often
-  did you communicate?
+  Both me and my partner just worked when we wanted to. We communicated daily on what we had done, and how we did it. We also worked together during lab sessions.
 
-- For each individual team member:
+#### Love
 
-  - Describe which parts (or subtasks) of the project they were responsible for.
-    Consider writing the report as a separate task. Try to identify main
-    contributors and co-contributors.
+  The work division came rather naturally, we both wrote code when we wanted to and told the other part of what we had done. In the end I did a bit more on part one because I was exited to code when the project was released. Then we both did a lot on part two during laboration sessions, and in the end Samuel ended up writing a bit more than me on that part.
 
-  - Estimate hours spend each week (on average)
+  In average I would estimate that I spent around 4 to 5 hours a week on the project, including lab sessions.
 
-- What lessons have you learned? What should you have done differently if you
-  now were facing a similar project.
+  I really cannot think of anything that I would have done differently. I like that we worked when we felt like working, and it was challening in a good and fun way to solve the tasks before the presentations dropped. I was thinking of doing the project myself in the beginning, but I am glad that I worked on this with Samuel, since we both have a "passion" for programming, and it have been rather nice to have someone to solve the problems with. The main lessons learnt would be how a Hashet and Binary Search Tree work, recursion, git, and perhaps python in general.
+
+#### Samuel
+
+  We did not really divide the project up in between us we just did what we felt like when we felt like it and merged it all together nicely by the end.
+  Part wise I would say part one was more Love and part two was more my doing. Part three was a joint effort in doing and the report we have either done together at lab sessions or divided it up in equal bits and pieces.
+
+  I would estimate that I spent about 2 hours per week outside of school given I did not attend the last two lab sessions.
+
+  I can not really think of anything that we could have done differently really, the main reason for this would be that we both know that the other person had previous knowledge in programming and there for could rely on the other person to put in the required work needed to complete the project on time. I think I have gotten more knowledgeable in python and gotten a bit more used to git especially through the command line.
