@@ -181,6 +181,6 @@ In this project we where supposed to first using builtin functions count the amo
   We did not really divide the project up in between us we just did what we felt like when we felt like it and merged it all together nicely by the end.
   Part wise I would say part one was more Love and part two was more my doing. Part three was a joint effort in doing and the report we have either done together at lab sessions or divided it up in equal bits and pieces.
 
-  I would estimate that I spent about 2 hours per week outside of school given I did not attend the last two lab sessions.
+  I would estimate that I spent about 4 hours a week including lab sessions.
 
-  I can not really think of anything that we could have done differently really, the main reason for this would be that we both know that the other person had previous knowledge in programming and there for could rely on the other person to put in the required work needed to complete the project on time. I think I have gotten more knowledgeable in python and gotten a bit more used to git especially through the command line.
+  I can not really think of anything that we could have done differently really, the main reason for this would be that we both know that the other person had previous knowledge in programming and there for could rely on the other person to put in the required work needed to complete the project on time. I think I have gotten more knowledgeable in python and gotten a bit more used to git especially through the command line. This was also a fun thins to do as to finishing up this course and in general a great learning experience.
