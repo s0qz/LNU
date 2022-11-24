@@ -1,11 +1,20 @@
 from machine import Pin
-import rp2
 import time
+import _thread
 
-while True:
-    p8 = Pin(8, Pin.OUT)
-    p9 = Pin(9, Pin.OUT)
-    p10 = Pin(10, Pin.OUT)
+
+def main():
+    print("Hello pico")
+
+
+_thread.start_new_thread(main, ())
+
+count = 0
+
+while count < 10:
+    p8 = Pin(15, Pin.OUT)
+    p9 = Pin(14, Pin.OUT)
+    p10 = Pin(13, Pin.OUT)
     p8.value(1)
     time.sleep(1)
     p8.value(0)
@@ -15,3 +24,4 @@ while True:
     p10.value(1)
     time.sleep(1)
     p10.value(0)
+    count += 1

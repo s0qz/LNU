@@ -45,18 +45,21 @@ def main():
     global start
     global time_diff
     global count
+    global play
 
-    while time_diff < 60:
+    while time_diff < 10:
         time_diff = time() - start
         if button.value() and time_diff >= 1:
             count += 1
             print(
-                f"Button was pressed: {count} time(s). Time since last {time_diff}ms")
+                f"Button was pressed: {count} time(s). Time since last " +
+                f"{time_diff}ms")
             play = True
             start = time()
         elif button.value() and time_diff < 1:
             print(
-                f"Ignored button press: Time left for next press is {1 - time_diff}ms")
+                "Ignored button press: Time left for next press is " +
+                f"{1 - time_diff}ms")
 
 
 button = Pin(0, Pin.IN)
@@ -75,6 +78,7 @@ play = False
 start = 0
 time_diff = 0
 count = 0
+tries = 0
 
 E7 = 2637
 F7 = 2794
@@ -98,9 +102,10 @@ _thread.start_new_thread(main, ())
 
 start = time()
 
-while True:
+while tries < 100:
     sleep(0.05)
     temperature()
     if play:
         mario_song()
         sleep(0.15)
+    tries += 1
