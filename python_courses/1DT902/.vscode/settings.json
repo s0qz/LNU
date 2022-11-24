@@ -1,9 +1,17 @@
 {
     "cSpell.words": [
+        "Bergett",
+        "isconnected",
+        "lightoff",
+        "lighton",
+        "pico",
         "picozero",
-        "Temprature"
+        "ssid",
+        "Temprature",
+        "wlan",
+        "wwjd"
     ],
-    "python.linting.enabled": true,
+    "python.linting.enabled": false,
     "python.analysis.typeshedPaths": [
         ".vscode\\Pico-W-Stub"
     ],
@@ -13,5 +21,6 @@
         ".vscode\\Pico-W-Stub\\stubs"
     ],
     "picowgo.syncFolder": "",
-    "picowgo.openOnStart": true
+    "picowgo.openOnStart": true,
+    "python.linting.pylintEnabled": true
 }

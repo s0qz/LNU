@@ -24,7 +24,7 @@ def temperature():
 
 count = 0
 time_difference = 0
-play = 1
+play = True
 
 
 def buttonEventCallback(start):
@@ -48,7 +48,7 @@ def buttonEventCallback(start):
              G7, 0, E7, 0, C7, D7, B6, 0, 0, C7, 0, 0, G6, 0, 0, E6, 0, 0, A6, 0, B6, 0, AS6, A6, 0, G6, E7, 0, G7, A7, 0, F7, G7, 0, E7, 0, C7, D7, B6, 0, 0]
 
     if play:
-        play -= 1
+        play = False
         mario_song(mario)
 
 
@@ -74,7 +74,7 @@ def mario_song(mario):
         led_r.off()
         led_y.off()
         led_g.off()
-    play = 1
+    play = True
 
 
 E7 = 2637
