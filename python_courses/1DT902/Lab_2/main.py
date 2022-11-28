@@ -1,7 +1,9 @@
 # import web_server
+from Lab_2.internet import Internet
 from machine import Pin
 from picozero import Speaker
 from time import sleep, time
+
 
 button = Pin(0, Pin.IN)
 
@@ -26,7 +28,7 @@ def traffic_go():
 
 
 def traffic_soon_stop():
-    car_r.off()
+    car_g.off()
     car_y.on()
     sleep(2)
     all_stop()
@@ -46,7 +48,8 @@ def pedestrian_go():
     start_pedestrian_go = time()
     now = 0
     while now - start_pedestrian_go < 3:
-        buzzer.play(note, 0.05)
+        buzzer.play(note, 0.25, 5)
+        buzzer.play(note, 0.1, 0)
         now = time()
     pedestrian_soon_stop()
 
@@ -57,7 +60,8 @@ def pedestrian_soon_stop():
     start_pedestrian_soon_stop = time()
     now = 0
     while now - start_pedestrian_soon_stop < 1:
-        buzzer.play(note, 0.20)
+        buzzer.play(1000, 0.4, 5)
+        buzzer.play(1000, 0.2, 0)
         now = time()
     traffic_get_ready()
 
@@ -72,19 +76,14 @@ def traffic_get_ready():
 
 def buttonEventCallback():
     pedestrian_y.on()
-    press = time()
-    if press - start >= 4:
-        traffic_soon_stop()
-    else:
-        press = time()
-        sleep(press - start)
-        traffic_soon_stop()
+    sleep(4)
+    traffic_soon_stop()
 
 
-start = time()
+Internet.connect()
 
 while True:
     traffic_go()
     if button.value():
-        buzzer.play(note, 0.1)
+        buzzer.play(note, 0.5, 5)
         buttonEventCallback()
