@@ -9,8 +9,8 @@ class MQTTConnect:
         config['port'] = '1883'
         config['user'] = 'king'
         config['password'] = 'arthur'
-        config['ssid'] = 'Anonymous'
-        config['wifi_pw'] = '3q1t6ibj'
+        # config['ssid'] = 'Anonymous'
+        # config['wifi_pw'] = '3q1t6ib'
 
         async def messages(client):  # Respond to incoming messages
             async for topic, msg, retained in client.queue:
