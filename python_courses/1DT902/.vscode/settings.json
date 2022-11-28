@@ -4,10 +4,13 @@
         "isconnected",
         "lightoff",
         "lighton",
+        "mqtt",
+        "mqtt_async",
         "pico",
         "picozero",
         "ssid",
         "Temprature",
+        "uasyncio",
         "wlan",
         "wwjd"
     ],

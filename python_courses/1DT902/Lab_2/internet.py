@@ -6,6 +6,8 @@ class Internet:
     def connect():
         ssid = 'Anonymous'
         password = '3q1t6ibj'
+        # ssid = ''
+        # password = ''
 
         wlan = network.WLAN(network.STA_IF)
         wlan.active(True)
