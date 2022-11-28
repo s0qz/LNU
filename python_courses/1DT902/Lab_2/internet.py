@@ -11,7 +11,6 @@ class Internet:
         wlan.active(True)
         wlan.connect(ssid, password)
 
-        # Wait for connect or fail
         max_wait = 10
         while max_wait > 0:
             if wlan.status() < 0 or wlan.status() >= 3:
@@ -20,7 +19,6 @@ class Internet:
             print('Waiting for connection...')
             sleep(1)
 
-        # Handle connection error
         if wlan.status() != 3:
             raise RuntimeError('Connection Failed')
         else:
