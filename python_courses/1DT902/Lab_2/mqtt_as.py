@@ -3,7 +3,7 @@ from mqtt_async import MQTTClient, config
 import uasyncio as asyncio
 
 
-class MQTT_connect:
+class MQTTConnect:
     def mqtt_connect():
         config['server'] = '64.225.110.253'
         config['port'] = '1883'
