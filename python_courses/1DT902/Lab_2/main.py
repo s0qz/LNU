@@ -1,6 +1,5 @@
-# import web_server
 from Lab_2.internet import Internet
-from Lab_2.mqtt_as import MQTTConnect
+from Lab_2.mqtt import MQTTConnect
 from machine import Pin
 from picozero import Speaker
 from time import sleep, time
@@ -81,7 +80,7 @@ def buttonEventCallback():
     traffic_soon_stop()
 
 
-Internet.connect()
+# Internet.connect()
 MQTTConnect.mqtt_connect()
 
 while True:
