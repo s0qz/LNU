@@ -1,10 +1,10 @@
 from machine import Pin
 from time import sleep
-import dht
+from dht import DHT11
 
-dht11 = dht.DHT11(Pin(0))
+dht11 = DHT11(Pin(0))
 
 while True:
     dht11.measure()
-    print(f"Temprature: {d.temperature()} °C and Humidity: {d.humidity()} %")
+    print(f"Temprature: {dht11.temperature()} °C and Humidity: {dht11.humidity()} %")
     sleep(300)
