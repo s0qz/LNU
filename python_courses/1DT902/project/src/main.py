@@ -8,7 +8,3 @@ while True:
     d.measure()
     print(f"Temprature: {d.temperature()} °C and Humidity: {d.humidity()} %")
     sleep(300)
-
-
-user = "sensor_one"
-key = "JA4eRQhwizvMB69VA2UgXu5iP9KsgatvsCxnExjyBy3em"
