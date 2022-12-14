@@ -1,19 +1,180 @@
 <!DOCTYPE html>
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/task.js/0.1.5/task.js"
+    integrity="sha512-VTip1Uh+7zneoFEfBhs4MiMV+KjrJmNyd2SUicc0zrtcufzj1CxzB3FAfRYjHX1J+2OBDyvXugNm+qFQS4yiIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-    </script>
-    <script src="App.js"></script>
-    <style src="style.css"></style>
-    <title>Termostatuler</title>
-</head>
+    <title>Temperature and Humidity Charts</title>
+    <style>
+        body,
+        header {
+            background-color: #007c3e;
+        }
 
+        h2 {
+            text-align: center;
+        }
+
+        #chart-container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .chart {
+            width: 50%;
+            float: left;
+            
+        }
+
+        #temperature,
+        #humidity {
+            margin-left: 3%;
+            margin-bottom: 3%;
+        }
+
+        #temperatureChart,
+        #temperature {
+            border: 2px solid rgba(255, 99, 132, 1);
+        }
+
+        #humidityChart,
+        #humidity {
+            border: 2px solid rgba(54, 162, 235, 1);
+        }
+
+        #temperatureChart,
+        #humidityChart,
+        #temperature,
+        #humidity {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<header style="text-align: center;">
+    <h1>Current Temperature and Humidity with Charts</h1>
+</header>
 <body>
-    <p1>Hello, World!</p1>
-    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+<div id="chart-container">
+    <div id="temperature" class="chart" style="width: 45%; height: 300px;">
+        <h2>Temperature (°C)</h2>
+    </div>
+    <div id="humidity" class="chart" style="width: 45%; height: 300px;">
+        <h2>Humidity (%)</h2>
+    </div>
+    <h2>Temperature (°C)</h2>
+    <canvas id="temperatureChart" class="chart" style="width: 100%; height: 500px; margin-left: auto; margin-bottom: 3%;">
+    </canvas>
+    <h2>Humidity (%)</h2>
+    <canvas id="humidityChart" class="chart" style="width: 100%; height: 500px; margin-left: auto; margin-bottom: 3%;">
+    </canvas>
+    </div>
+    <script type="module">
+        async function fetch_day(days) {
+            var date = new Date()
+            date.setDate(date.getDate() - days)
+            var dateString = date.toISOString().substring(0, 16)
+            var data = await fetch(`https://termostatuller.billenius.com/sql?since-date=${dateString}`, { method: 'GET' })
+            return await data.json()
+        };
+
+        // TODO: improve/look over
+        conn.then(async (connection) => {
+            var data_daily = await fetch_day(1);
+            var data_weekly = await fetch_day(7);
+
+            temperature = data1.map(entry => {
+                return {
+                    "y": entry["celsius"],
+                    "x": Date.parse(entry["created_at"])
+                }
+            });
+
+            humidity = data2.map(entry => {
+                return {
+                    'y': entry['humidity'],
+                    'x': Date.parse(entry['created_at'])
+                }
+            });
+
+            var temperatureChart = new Chart('temperatureChart', {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        pointRadius: 4,
+                        pointBackgroundColor: "#FF1493",
+                        data: temperature,
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                callback: function (value) {
+                                    return new Date(value).toLocaleString("sv-SE", {
+                                        month: "short",
+                                        day: "numeric",
+                                        hour: "numeric",
+                                        minute: "numeric"
+                                    })
+                                }
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+
+                                min: 6,
+                                max: 45,
+                                callback: function (value, index, values) {
+                                    return value + '\u00B0';
+                                }
+                            }
+                        }],
+                    }
+                },
+            });
+
+            var humidityChart = new Chart('humidityChart', {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        pointRadius: 4,
+                        pointBackgroundColor: "#FF1493",
+                        data: humidity,
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                callback: function (value) {
+                                    return new Date(value).toLocaleString("sv-SE", {
+                                        month: "short",
+                                        day: "numeric",
+                                        hour: "numeric",
+                                        minute: "numeric"
+                                    })
+                                }
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+
+                                min: 15,
+                                max: 50,
+                                callback: function (value, index, values) {
+                                    return value + '%';
+                                }
+                            }
+                        }],
+                    }
+                },
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -3,8 +3,6 @@ from time import sleep
 from dht import DHT11
 import urequests as requests
 import network
-from picozero import TemperatureSensor
-from math import log
 
 dht11 = DHT11(Pin(0))
 
@@ -13,12 +11,11 @@ ky028 = ADC(Pin(28))
 
 def read_temp():
     return ky028.read_u16() * (3.3 / 4095) * 2
-    return (ky028.read_u16() * (3.3 / 4095) * 100) - 273.15
 
 
 def connect():
-    ssid = ''
-    password = ''
+    ssid = 'LNU-iot'
+    password = 'modermodemet'
 
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
@@ -45,12 +42,12 @@ connect()
 while True:
     dht11.measure()
     temperature_ky = read_temp()
-    temp = (dht11.temperature() + temperature_ky) / 2
+    temp = round((dht11.temperature() + temperature_ky) / 2, 1)
     humid = dht11.humidity()
     print(
         f"Temprature: {temp} °C and Humidity: {humid} %")
 
-    req = requests.get('http://billenius.com:8579', headers={
+    req = requests.post('http://billenius.com:8579', headers={
         'x-celsius': str(temp),
         'x-humidity': str(humid),
         'x-password': 'JA4eRQhwizvMB69VA2UgXu5iP9KsgatvsCxnExjyBy3em',

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/task.js/0.1.5/task.js"
+    integrity="sha512-VTip1Uh+7zneoFEfBhs4MiMV+KjrJmNyd2SUicc0zrtcufzj1CxzB3FAfRYjHX1J+2OBDyvXugNm+qFQS4yiIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<body>
+    <canvas id="temperatureChart" style="width:100%;max-width:700px"></canvas>
+
+    <script type="module">
+        async function getLastMinutes(minutes) {
+            var date = new Date(Date.now() - minutes * 60 * 1000)
+            var dateString = date.toISOString().slice(0, 16).replace("T", " ")
+            var data = await fetch(`https://termostatuller.billenius.com/sql?since-date=${dateString}`, { method: 'GET' })
+            return await data.json()
+        }
+
+        async function updateCharts(tempChart) {
+
+        }
+
+        var exData = (await getLastMinutes(7 * 24 * 60)).slice(0, 1)
+
+        var temperature = exData.map(entry => {
+            return {
+                "y": entry["celsius"],
+                "x": Date.parse(entry["created_at"])
+            }
+        })
+
+        var c = new Chart("temperatureChart", {
+            type: "scatter",
+            data: {
+                datasets: [{
+                    pointRadius: 4,
+                    pointBackgroundColor: "#FF1493",
+                    data: temperature,
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            callback: function (value) {
+                                return new Date(value).toLocaleString("sv-SE", {
+                                    month: "short",
+                                    day: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric"
+                                })
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+
+                            min: 6,
+                            max: 35,
+                            callback: function (value, index, values) {
+                                return value + '\u00B0';
+                            }
+                        }
+                    }],
+                }
+            }
+        });
+
+
+        async function a() {
+            var lastMess = temperature[temperature.length - 1].x
+            // 5 min and 10s have elapsed since the last meassurement
+            if (lastMess < (Date.now() - 1000 * 60 * 5) + 10) {
+                var elapsedTime = (Date.now() - lastMess) / 1000
+                console.log(`Has passed more than 5 min (${elapsedTime}s)`);
+                console.log(c.data.datasets[0].data)
+                Array.prototype.push.apply(c.data.datasets[0].data, await getLastMinutes(elapsedTime / 60))
+                console.log(c.data.datasets[0].data)
+                c.update()
+            }
+        }
+        await setTimeout(() => { console.log("resumed"); a() }, 2000)
+    </script>
+
+</body>
+
+</html>
